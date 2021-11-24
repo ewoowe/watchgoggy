@@ -48,11 +48,15 @@ func goggiesInArgs() (bool, string) {
 	return true, file
 }
 
-func getApp(name string) App {
-	return Applications[name]
+func GetApp(name string) *App {
+	app, exist := Applications[name]
+	if exist {
+		return &app
+	}
+	return nil
 }
 
-func removeApp(name string) {
+func RemoveApp(name string) {
 	delete(Applications, name)
 }
 
