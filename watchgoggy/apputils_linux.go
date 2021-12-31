@@ -5,7 +5,6 @@ package watchgoggy
 import (
 	"bytes"
 	"errors"
-	"fmt"
 	"os"
 	"os/exec"
 	"strconv"
@@ -21,8 +20,8 @@ func GetPid(name string) (int, error) {
 	cmdFull.Stdout = &stdout
 	cmdFull.Run()
 
-	fmt.Println(cmdFull.String())
-	fmt.Println(string(stdout.Bytes()))
+	//fmt.Println(cmdFull.String())
+	//fmt.Println(string(stdout.Bytes()))
 	lineFull := strings.Split(string(stdout.Bytes()), "\n")
 	if cap(lineFull) < 1 {
 		return -1, errors.New("name of app not exist")
@@ -61,11 +60,19 @@ func RunApp(cmd *exec.Cmd, name string) error {
 	if cmd == nil {
 		return errors.New("cmd cant be nil")
 	}
-	var out, err = os.OpenFile("/var/log/"+name+".log", os.O_RDWR|os.O_CREATE, 0)
+
+	appLog, err := os.OpenFile("/root/workspace/watchgoggies/appLogs/"+name+".log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		return err
 	}
-	cmd.Stdout = out
-	cmd.Stderr = out
-	return cmd.Run()
+
+	cmd.Stdout = appLog
+	cmd.Stderr = appLog
+
+	err2 := cmd.Start()
+	if err2 != nil {
+		return err2
+	}
+
+	return cmd.Wait()
 }
