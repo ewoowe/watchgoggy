@@ -61,7 +61,7 @@ func RunApp(cmd *exec.Cmd, name string) error {
 		return errors.New("cmd cant be nil")
 	}
 
-	appLog, err := os.OpenFile("/root/workspace/watchgoggies/appLogs/"+name+".log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	appLog, err := os.OpenFile(Home+"/appLogs/"+name+".log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		return err
 	}

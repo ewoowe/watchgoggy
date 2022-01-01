@@ -1,7 +1,12 @@
 [
   {
-    "AppName": "SplitPagesDemo",
-    "Cmd": "/root/SplitPagesDemo",
-    "Params": [""]
+    "AppName": "goggie",
+    "Cmd": "/root/workspace/watchgoggies/goggie",
+    "Params": ["1", "2", "3"]
+  },
+  {
+    "AppName": "goggie2",
+    "Cmd": "/root/workspace/watchgoggies/goggie2",
+    "Params": ["4", "5", "6"]
   }
 ]

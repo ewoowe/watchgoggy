@@ -22,6 +22,8 @@ var (
 
 var goggies = "goggies.json"
 
+const Home = "/root/workspace/watchgoggies"
+
 //init read config infos from goggies
 func init() {
 	if os.Getenv("goggies") != "" {
