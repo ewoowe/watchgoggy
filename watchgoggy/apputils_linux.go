@@ -51,7 +51,7 @@ func IsPidExist(pid int) bool {
 func GetAppCmd(name string) (*exec.Cmd, error) {
 	app := GetApp(name)
 	if app != nil {
-		return exec.Command(app.Cmd), nil
+		return exec.Command(app.Cmd, app.Params...), nil
 	}
 	return nil, errors.New("has not app[" + name + "]'s config info")
 }
