@@ -8,6 +8,7 @@ For now, this version just can run in Linux, Welcome friends add other os suppor
 
 If you start your app with script, you must be sure your script will not return before your app exit. 
 For little suggestions is you can do while sleep function end of your script.  
+
 Usage
 -----
 You just
