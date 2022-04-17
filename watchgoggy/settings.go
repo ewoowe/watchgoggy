@@ -67,12 +67,12 @@ func reloadGoggies(file string) {
 	Applications = make(map[string]App)
 	bytes, err1 := ioutil.ReadFile(file)
 	if err1 != nil {
-		panic(any("cant read config file, plz check"))
+		panic("cant read config file, plz check")
 	}
 	apps := make([]App, 0)
 	err2 := json.Unmarshal(bytes, &apps)
 	if err2 != nil {
-		panic(any("cant deserialize config file, plz check"))
+		panic("cant deserialize config file, plz check")
 	}
 	for _, app := range apps {
 		Applications[app.AppName] = app
