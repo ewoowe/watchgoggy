@@ -1,6 +1,6 @@
 package main
 
-import "watchgoggy/watchgoggy"
+import "watchdoggy/watchgoggy"
 
 func main() {
 	watchgoggy.Monitor()
